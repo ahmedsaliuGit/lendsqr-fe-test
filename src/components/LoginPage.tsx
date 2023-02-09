@@ -1,8 +1,68 @@
+import { useState } from "react";
+import { redirect } from "react-router-dom";
+import { define, nonempty, object, string } from "superstruct";
+import isEmail from "is-email";
+
 import Logo from "../assets/images/logo.svg";
 import PabloSignIn from "../assets/images/pablo-sign-in.svg";
 import "./LoginPage.scss";
 
+const Email = define("Email", isEmail);
+
+const loginSchema = object({
+  email: Email,
+  password: nonempty(string()),
+});
+
 function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordMsg, setPasswordMsg] = useState("");
+  const [emailMsg, setEmailMsg] = useState("");
+  const [isMask, setIsMask] = useState(false);
+
+  const handleChange = function (
+    event: React.FormEvent<HTMLInputElement>
+  ): void {
+    if (email) {
+      setEmailMsg("");
+    }
+    if (password) {
+      setPasswordMsg("");
+    }
+
+    const currentElem = event.currentTarget;
+    if (currentElem.name === "email") {
+      setEmail(currentElem.value);
+    } else {
+      setPassword(currentElem.value);
+    }
+  };
+
+  const handleSubmit = function (event: React.SyntheticEvent) {
+    event.preventDefault();
+    const target = event.target as typeof event.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+    const email = target.email.value;
+    const password = target.password.value;
+
+    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+      setEmailMsg("Please enter valid email");
+    }
+
+    if (password === "") {
+      setPasswordMsg("Please enter valid password");
+    }
+
+    if (email === "" || password === "") return;
+
+    localStorage.setItem("isAuthenticated", "true");
+
+    redirect("/dashboard");
+  };
+
   return (
     <main className="main">
       <div className="main-side1">
@@ -18,24 +78,42 @@ function LoginPage() {
           <h1 className="text-lg">Welcome!</h1>
           <p className="text">Enter details to login</p>
 
-          <form method="post" className="form">
-            <input
-              type="email"
-              placeholder="Email"
-              aria-label="Email"
-              name="email"
-              className="input-field"
-            />
-            <label htmlFor="password" className="input-field show">
+          <form method="post" className="form" onSubmit={handleSubmit}>
+            <label htmlFor="email" className="label no-margin-bottom">
               <input
-                type="password"
+                type="text"
+                placeholder="Email"
+                id="emal"
+                aria-label="Email"
+                name="email"
+                className="input-field"
+                onChange={handleChange}
+                value={email}
+              />
+            </label>
+            <span className={`error${emailMsg ? " show-error" : ""}`}>
+              {emailMsg ? emailMsg : ""}
+            </span>
+            <label htmlFor="password" className="label show">
+              <input
+                type={isMask ? "text" : "password"}
                 placeholder="Password"
                 id="password"
                 name="password"
-                className="password"
+                className="input-field"
+                onChange={handleChange}
+                value={password}
               />
-              <span className="show-password">show</span>
+              <span
+                className="show-password"
+                onClick={() => setIsMask(!isMask)}
+              >
+                {isMask ? "hide" : "show"}
+              </span>
             </label>
+            <span className={`error${passwordMsg ? " show-error" : ""}`}>
+              {passwordMsg ? passwordMsg : ""}
+            </span>
             <p className="text--link">
               <a href="#forgot" className="link">
                 Forgot password?
