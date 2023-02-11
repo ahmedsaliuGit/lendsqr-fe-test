@@ -1,18 +1,9 @@
 import { useState } from "react";
-import { redirect } from "react-router-dom";
-import { define, nonempty, object, string } from "superstruct";
-import isEmail from "is-email";
+import { useNavigate } from "react-router-dom";
 
 import Logo from "../assets/images/logo.svg";
 import PabloSignIn from "../assets/images/pablo-sign-in.svg";
 import "./LoginPage.scss";
-
-const Email = define("Email", isEmail);
-
-const loginSchema = object({
-  email: Email,
-  password: nonempty(string()),
-});
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -20,6 +11,7 @@ function LoginPage() {
   const [passwordMsg, setPasswordMsg] = useState("");
   const [emailMsg, setEmailMsg] = useState("");
   const [isMask, setIsMask] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = function (
     event: React.FormEvent<HTMLInputElement>
@@ -56,11 +48,13 @@ function LoginPage() {
       setPasswordMsg("Please enter valid password");
     }
 
-    if (email === "" || password === "") return;
+    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email) || password === "") {
+      return;
+    }
 
     localStorage.setItem("isAuthenticated", "true");
 
-    redirect("/dashboard");
+    navigate("/dashboard");
   };
 
   return (
