@@ -5,13 +5,18 @@ import "./DashboardPage.css";
 
 function DashboardPage() {
   const [nav, setNav] = useState(false);
+  const [sidenav, setSidenav] = useState(false);
 
   return (
     <div className="grid-container">
       <header className="header">
         <div className="header__logo">
-          <div className="menu-icon">
-            <i className="fas fa-bars"></i>
+          <div className="menu-icon" onClick={() => setSidenav(!nav)}>
+            {sidenav ? (
+              <i className="fas fa-close"></i>
+            ) : (
+              <i className="fas fa-bars"></i>
+            )}
           </div>
           <img src={Logo} alt="Lendsequare logo" className="logo" />
           <div className="menu-icon" onClick={() => setNav(!nav)}>
@@ -38,10 +43,13 @@ function DashboardPage() {
           </nav>
         </div>
       </header>
-      <aside className="sidenav">
-        {/* <div className="sidenav__close-icon">
+      <aside className={`sidenav ${sidenav && "active"}`}>
+        <div
+          className="sidenav__close-icon"
+          onClick={() => setSidenav(!sidenav)}
+        >
           <i className="fas fa-times"></i>
-        </div> */}
+        </div>
         <ul className="sidenav__list">
           <li className="list__item">
             <a className="list__link" href="#home">
