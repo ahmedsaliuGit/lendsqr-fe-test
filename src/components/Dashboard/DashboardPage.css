@@ -75,9 +75,10 @@ body {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   z-index: 2;
   /* Needs to sit above the hamburger menu icon */
-  background-color: #394263;
+  background-color: white;
   transform: translateX(-245px);
-  transition: all 0.6s ease-in-out; }
+  transition: all 0.6s ease-in-out;
+  color: #213f7d; }
 
 /* The active class is toggled on hamburger and close icon clicks */
 .sidenav.active {
@@ -98,6 +99,25 @@ body {
   margin-top: 5.3125em;
   list-style: none; }
 
+.sidenav__item {
+  color: #545f7d;
+  padding: 0.5em 0 0.5em 1em;
+  text-transform: capitalize; }
+
+.sidenav__item--heading {
+  border-left: 2px solid white; }
+
+.sidenav__item.selected {
+  background-color: rgba(57, 205, 204, 0.1);
+  border-left: 2px solid #39cdcc; }
+
+.sidenav__link {
+  text-decoration: none;
+  color: #545f7d; }
+
+.sidenav__item.selected > .sidenav__link {
+  color: #213f7d; }
+
 .menu-icon {
   position: relative; }
 
@@ -108,6 +128,13 @@ body {
 .dash-main {
   grid-area: main;
   background-color: #e5e5e5; }
+
+.main-header {
+  margin: 1.25em;
+  padding: 1rem; }
+
+.main-header__title {
+  margin: 0; }
 
 /* Non-mobile styles, 750px breakpoint */
 @media only screen and (min-width: 46.875em) {

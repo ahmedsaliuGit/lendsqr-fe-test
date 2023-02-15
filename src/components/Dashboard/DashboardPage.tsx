@@ -51,14 +51,19 @@ function DashboardPage() {
           <i className="fas fa-times"></i>
         </div>
         <ul className="sidenav__list">
-          <li className="list__item">
-            <a className="list__link" href="#home">
-              user
+          <li className="sidenav__item sidenav__item--heading">Customer</li>
+          <li className="sidenav__item selected">
+            <a className="sidenav__link" href="#home">
+              users
             </a>
           </li>
         </ul>
       </aside>
-      <main className="dash-main"></main>
+      <main className="dash-main">
+        <div className="main-header">
+          <h2 className="main-header__title">Users</h2>
+        </div>
+      </main>
     </div>
   );
 }

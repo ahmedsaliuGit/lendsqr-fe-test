@@ -80,9 +80,10 @@
   overflow-y: auto;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   z-index: 2; /* Needs to sit above the hamburger menu icon */
-  background-color: #394263;
+  background-color: white;
   transform: translateX(-245px);
   transition: all 0.6s ease-in-out;
+  color: $primary-color;
 }
 
 /* The active class is toggled on hamburger and close icon clicks */
@@ -107,6 +108,30 @@
   list-style: none;
 }
 
+.sidenav__item {
+  color: $tertiary-color;
+  padding: 0.5em 0 0.5em 1em;
+  text-transform: capitalize;
+}
+
+.sidenav__item--heading {
+  border-left: 2px solid white;
+}
+
+.sidenav__item.selected {
+  background-color: rgba($secondary-color, 0.1);
+  border-left: 2px solid $secondary-color;
+}
+
+.sidenav__link {
+  text-decoration: none;
+  color: $tertiary-color;
+}
+
+.sidenav__item.selected > .sidenav__link {
+  color: $primary-color;
+}
+
 .menu-icon {
   position: relative;
 }
@@ -119,6 +144,15 @@
 .dash-main {
   grid-area: main;
   background-color: #e5e5e5;
+}
+
+.main-header {
+  margin: 1.25em;
+  padding: 1rem;
+}
+
+.main-header__title {
+  margin: 0;
 }
 
 /* Non-mobile styles, 750px breakpoint */
