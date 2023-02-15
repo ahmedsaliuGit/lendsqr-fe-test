@@ -1,7 +1,12 @@
 import { useState } from "react";
 import Logo from "../../assets/images/logo.svg";
 import UserImage from "../../assets/images/user-image.png";
+import UserIcon from "../../assets/images/user-icon.png";
+import UsersIcon from "../../assets/images/users-icon.png";
+import LoansIcon from "../../assets/images/loans-icon.png";
+import SavingsIcon from "../../assets/images/savings-icon.png";
 import "./DashboardPage.css";
+import { Card } from "../Card/Card";
 
 function DashboardPage() {
   const [nav, setNav] = useState(false);
@@ -61,7 +66,17 @@ function DashboardPage() {
       </aside>
       <main className="dash-main">
         <div className="main-header">
-          <h2 className="main-header__title">Users</h2>
+          <p className="main-header__title">Users</p>
+        </div>
+        <div className="main-card">
+          <Card image={UserIcon} title="Users" amount={2453} />
+          <Card image={UsersIcon} title="Active Users" amount={2453} />
+          <Card image={LoansIcon} title="Users with loans" amount={12453} />
+          <Card
+            image={SavingsIcon}
+            title="Users with savings"
+            amount={102453}
+          />
         </div>
       </main>
     </div>
