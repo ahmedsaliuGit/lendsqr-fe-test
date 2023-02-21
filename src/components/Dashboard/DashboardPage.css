@@ -1,4 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css");
 body {
   color: #213f7d;
   font: 100% "Avenir Next LT Pro", sans-serif;
@@ -160,6 +160,61 @@ body {
 .card__label--amount {
   color: #213f7d;
   font-weight: 700; }
+
+.table-container {
+  margin: 1.5em;
+  width: auto;
+  max-width: 335px;
+  overflow-y: hidden;
+  overflow-x: auto; }
+
+.mobile-container {
+  width: 1028px;
+  height: auto;
+  background-color: white; }
+
+table-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px; }
+
+table-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+table-container::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse; }
+
+thead th {
+  position: sticky;
+  top: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: 0.88rem; }
+
+td {
+  border-bottom: 1px solid #545f7d;
+  word-break: break-all;
+  font-size: 0.875rem;
+  line-height: 1rem; }
+
+thead th,
+tbody td {
+  color: #545f7d;
+  text-align: left;
+  padding: 0.5em 0.75em; }
+
+thead th:last-child,
+tbody td:last-child {
+  width: 2rem; }
+
+tr:hover td {
+  background-color: #545f7d;
+  cursor: pointer; }
 
 /* Non-mobile styles, 750px breakpoint */
 @media only screen and (min-width: 46.875em) {

@@ -78,6 +78,70 @@ function DashboardPage() {
             amount={102453}
           />
         </div>
+        <div className="table-container">
+          <div className="mobile-container">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>
+                    Organisation <i className="fas fa-filter"></i>
+                  </th>
+                  <th>
+                    Username <i className="fas fa-filter"></i>
+                  </th>
+                  <th>
+                    Email <i className="fas fa-filter"></i>
+                  </th>
+                  <th>
+                    Phone Number <i className="fas fa-filter"></i>
+                  </th>
+                  <th>
+                    Date Joined <i className="fas fa-filter"></i>
+                  </th>
+                  <th>
+                    Status <i className="fas fa-filter"></i>
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lendsequare</td>
+                  <td>Adedeji</td>
+                  <td>adedeji@adedeji.com</td>
+                  <td>+91 9999999999</td>
+                  <td>2020-01-01</td>
+                  <td>Active</td>
+                  <td>
+                    <i className="fas fa-ellipsis-vertical"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Lendsequare</td>
+                  <td>Adedeji</td>
+                  <td>adedeji@adedeji.com</td>
+                  <td>+91 9999999999</td>
+                  <td>2020-01-01</td>
+                  <td>Active</td>
+                  <td>
+                    <i className="fas fa-ellipsis-vertical"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Lendsequare</td>
+                  <td>Adedeji</td>
+                  <td>adedeji@adedeji.com</td>
+                  <td>+91 9999999999</td>
+                  <td>2020-01-01</td>
+                  <td>Active</td>
+                  <td>
+                    <i className="fas fa-ellipsis-vertical"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </main>
     </div>
   );

@@ -184,6 +184,72 @@
   font-weight: 700;
 }
 
+.table-container {
+  margin: 1.5em;
+  width: auto;
+  max-width: 335px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.mobile-container {
+  width: 1028px;
+  height: auto;
+  background-color: white;
+}
+
+table-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+table-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+table-container::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: 0.88rem;
+}
+
+td {
+  border-bottom: 1px solid $tertiary-color;
+  word-break: break-all;
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+thead th,
+tbody td {
+  color: $tertiary-color;
+  text-align: left;
+  padding: 0.5em 0.75em;
+}
+
+thead th:last-child,
+tbody td:last-child {
+  width: 2rem;
+}
+
+tr:hover td {
+  background-color: $tertiary-color;
+  cursor: pointer;
+}
+
 /* Non-mobile styles, 750px breakpoint */
 @media only screen and (min-width: 46.875em) {
   /* Show the sidenav */
