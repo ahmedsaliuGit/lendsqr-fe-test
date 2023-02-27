@@ -37,9 +37,6 @@ body {
   display: block;
   width: 100%; }
 
-.header__search {
-  display: none; }
-
 .logo {
   width: 30%; }
 
@@ -63,6 +60,37 @@ body {
 .list__item:hover {
   background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer; }
+
+.list-layout {
+  display: flex;
+  flex-direction: column; }
+
+.list-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0 auto 0.5em; }
+
+.search__textfield {
+  width: 100%;
+  height: 30px;
+  padding: 1em;
+  border: 1px solid #545f7d;
+  border-right: none;
+  border-radius: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px; }
+
+.search__btn {
+  padding: 0.5em 1em;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #39cdcc;
+  color: white; }
+
+.search__textfield::placeholder {
+  color: #545f7d; }
 
 .sidenav {
   grid-area: sidenav;
@@ -123,6 +151,7 @@ body {
 
 /* Make room for the menu icon on mobile */
 .header__search {
+  display: none;
   margin-left: 42px; }
 
 .dash-main {
@@ -223,10 +252,48 @@ tr:hover td {
     grid-template-columns: 240px 1fr;
     /* Show the side nav for non-mobile screens */
     grid-template-areas: "header header" "sidenav main" "sidenav main"; }
+  .header {
+    display: flex; }
+  .logo {
+    width: 50%; }
+  .header__logo {
+    max-width: 240px;
+    width: 100%; }
+  .header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 0; }
+  .header__search {
+    display: flex;
+    margin-left: 0.5em;
+    width: 35%; }
+  .nav {
+    padding: 0;
+    margin: 0;
+    width: auto;
+    margin-left: auto; }
+  .nav__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0; }
+  .list__item {
+    margin-top: 0;
+    margin-right: 2rem; }
+  .list-layout {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center; }
+  .list-avatar {
+    margin: 0 0.5em 0 0; }
   .sidenav {
     position: relative;
     /* Fixed position on mobile */
-    transform: translateX(0); }
+    transform: translateX(0);
+    z-index: -1; }
   .sidenav__close-icon {
     visibility: hidden; } }
 

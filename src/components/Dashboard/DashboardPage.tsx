@@ -32,23 +32,39 @@ function DashboardPage() {
             )}
           </div>
         </div>
-        <div className={`header__nav ${nav && "active"}`}>
+        <div className={`header__nav${nav ? " active" : ""}`}>
           <form action="post" className="header__search">
-            <input type="text" aria-label="search" />
-            <button type="button"></button>
+            <input
+              type="text"
+              aria-label="search"
+              placeholder="Search for anything"
+              className="search__textfield"
+            />
+            <button type="button" className="search__btn">
+              <i className="fas fa-magnifying-glass"></i>
+            </button>
           </form>
           <nav className="nav">
             <ul className="nav__list">
-              <li className="list__item">Doc</li>
-              <li className="list__item">icon</li>
+              <li className="list__item">Docs</li>
               <li className="list__item">
-                <img src={UserImage} alt="user avatar" /> <br /> Adedeji
+                <i className="fa-solid fa-bell"></i>
+              </li>
+              <li className="list__item list-layout">
+                <img
+                  src={UserImage}
+                  alt="user avatar"
+                  className="list-avatar"
+                />{" "}
+                <span>
+                  Adedeji <i className="fa-solid fa-caret-down"></i>
+                </span>
               </li>
             </ul>
           </nav>
         </div>
       </header>
-      <aside className={`sidenav ${sidenav && "active"}`}>
+      <aside className={`sidenav${sidenav ? " active" : ""}`}>
         <div
           className="sidenav__close-icon"
           onClick={() => setSidenav(!sidenav)}

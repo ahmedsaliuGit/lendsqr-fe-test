@@ -10,114 +10,96 @@ body {
   height: 100vh;
   overflow: hidden;
   padding: 2em; }
-
-.main .main-side1 {
-  width: 100%;
-  background-color: white; }
-
-.main .main-side2 {
-  width: 100%;
-  background-color: white;
-  margin-top: 3em;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.main-logo {
-  margin-bottom: 3em; }
+  .main .main-side1 {
+    width: 100%;
+    background-color: white; }
+  .main .main-side2 {
+    width: 100%;
+    background-color: white;
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .main-logo {
+    margin-bottom: 3em; }
 
 .form-wrapper {
   width: 100%;
   max-width: 445px; }
-
-.form-wrapper .text {
-  color: #545f7d;
-  margin-top: 0.5rem; }
-
-.form-wrapper .text-lg {
-  margin-bottom: 0; }
-
-.form-wrapper .form {
-  margin-top: 3.5em; }
-
-.form-wrapper .form .input-field {
-  height: 50px;
-  width: 100%;
-  border-radius: 5px;
-  padding-left: 1em;
-  border: 2px solid rgba(84, 95, 125, 0.15);
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 0.8em;
-  color: #545f7d;
-  outline: none; }
-
-.form-wrapper .form .label {
-  height: 50px;
-  width: 80%;
-  display: block; }
-
-.form-wrapper .form .error {
-  width: auto;
-  height: 1.5em;
-  visibility: hidden;
-  display: block; }
-
-.form-wrapper .form .show-error {
-  color: red;
-  padding-left: 1em;
-  visibility: visible; }
-
-.form-wrapper .show {
-  position: relative; }
-
-.form-wrapper .show-password {
-  position: absolute;
-  top: 40%;
-  right: 1em;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.195em;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  color: #39cdcc; }
-
-.form-wrapper .show-password:hover {
-  color: rgba(57, 205, 204, 0.5);
-  cursor: pointer; }
-
-.form-wrapper .text--link {
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em; }
-
-.form-wrapper .text--link .link {
-  text-decoration: none;
-  color: #39cdcc; }
-
-.form-wrapper .text--link .link:hover {
-  color: rgba(57, 205, 204, 0.5); }
-
-.form-wrapper .btn {
-  width: 80%;
-  height: 50px;
-  border-radius: 10px;
-  border: none;
-  color: white;
-  background-color: #39cdcc;
-  padding: 0.5em 1em;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.195em;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-  margin-top: 1.875em; }
-
-.form-wrapper .btn:hover {
-  background-color: rgba(57, 205, 204, 0.5);
-  cursor: pointer; }
+  .form-wrapper .text {
+    color: #545f7d;
+    margin-top: 0.5rem; }
+  .form-wrapper .text-lg {
+    margin-bottom: 0; }
+  .form-wrapper .form {
+    margin-top: 3.5em; }
+    .form-wrapper .form .input-field {
+      height: 50px;
+      width: 100%;
+      border-radius: 5px;
+      padding-left: 1em;
+      border: 2px solid rgba(84, 95, 125, 0.15);
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 0.8em;
+      color: #545f7d;
+      outline: none; }
+    .form-wrapper .form .label {
+      height: 50px;
+      width: 80%;
+      display: block; }
+    .form-wrapper .form .error {
+      width: auto;
+      height: 1.5em;
+      visibility: hidden;
+      display: block; }
+    .form-wrapper .form .show-error {
+      color: red;
+      padding-left: 1em;
+      visibility: visible; }
+  .form-wrapper .show {
+    position: relative; }
+    .form-wrapper .show-password {
+      position: absolute;
+      top: 40%;
+      right: 1em;
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.195em;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      color: #39cdcc; }
+      .form-wrapper .show-password:hover {
+        color: rgba(57, 205, 204, 0.5);
+        cursor: pointer; }
+  .form-wrapper .text--link {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em; }
+    .form-wrapper .text--link .link {
+      text-decoration: none;
+      color: #39cdcc; }
+      .form-wrapper .text--link .link:hover {
+        color: rgba(57, 205, 204, 0.5); }
+  .form-wrapper .btn {
+    width: 80%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: #39cdcc;
+    padding: 0.5em 1em;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.195em;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    margin-top: 1.875em; }
+    .form-wrapper .btn:hover {
+      background-color: rgba(57, 205, 204, 0.5);
+      cursor: pointer; }
 
 @media (min-width: 900px) {
   .container {
@@ -128,16 +110,16 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0; }
-  .main .main-side1 {
-    height: 100vh;
-    background-color: rgba(229, 229, 229, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 10em 0 0 5em; }
-  .main .main-side2 {
-    height: 100vh;
-    margin-top: 0; }
+    .main .main-side1 {
+      height: 100vh;
+      background-color: rgba(229, 229, 229, 0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 10em 0 0 5em; }
+    .main .main-side2 {
+      height: 100vh;
+      margin-top: 0; }
   .pablo {
     margin-top: 6em; } }
