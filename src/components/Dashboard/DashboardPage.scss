@@ -279,8 +279,8 @@ tbody td:last-child {
 }
 
 tr:hover td {
-  background-color: $tertiary-color;
   cursor: pointer;
+  background-color: rgba($tertiary-color, 0.1);
 }
 
 /* Non-mobile styles, 750px breakpoint */
@@ -360,6 +360,14 @@ tr:hover td {
   .sidenav__close-icon {
     visibility: hidden;
   }
+
+  .table-container {
+    max-width: 1028px;
+  }
+
+  .mobile-container {
+    width: auto;
+  }
 }
 
 /* Medium-sized screen breakpoint (tablet, 1050px) */
@@ -367,5 +375,9 @@ tr:hover td {
   /* Break out main cards into two columns */
   .menu-icon {
     display: none;
+  }
+
+  .table-container {
+    max-width: 1440px;
   }
 }
