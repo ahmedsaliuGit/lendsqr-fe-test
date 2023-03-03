@@ -193,8 +193,10 @@ body {
 .table-container {
   margin: 1.5em;
   width: auto;
+  height: auto;
   max-width: 335px;
-  overflow-y: hidden;
+  max-height: 480px;
+  overflow-y: auto;
   overflow-x: auto; }
 
 .mobile-container {
@@ -223,7 +225,8 @@ thead th {
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.75rem;
-  line-height: 0.88rem; }
+  line-height: 0.88rem;
+  background-color: white; }
 
 td {
   border-bottom: 1px solid #545f7d;

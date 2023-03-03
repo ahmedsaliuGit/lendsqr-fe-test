@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../../assets/images/logo.svg";
 import UserImage from "../../assets/images/user-image.png";
 import UserIcon from "../../assets/images/user-icon.png";
@@ -7,10 +7,40 @@ import LoansIcon from "../../assets/images/loans-icon.png";
 import SavingsIcon from "../../assets/images/savings-icon.png";
 import "./DashboardPage.css";
 import { Card } from "../Card/Card";
+import { HttpAdapter } from "../../adapters/HttpAdapter";
+import { UserService } from "../../services/User.service";
+import { User } from "../../models/User";
+
+const httpAdapter = new HttpAdapter({
+  baseUrl: "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1",
+});
+const userService = new UserService(httpAdapter);
 
 function DashboardPage() {
   const [nav, setNav] = useState(false);
   const [sidenav, setSidenav] = useState(false);
+  const [users, setUsers] = useState<User[]>([]);
+
+  const fetchUsers = () => {
+    return userService.getAllUsers().then((users) => {
+      const newUsers = users.slice(0, 10).map((user) => {
+        return {
+          id: user.id,
+          userName: user.userName,
+          orgName: user.orgName,
+          phoneNumber: user.phoneNumber,
+          createdAt: user.createdAt,
+          lastActiveDate: user.lastActiveDate,
+          email: user.email,
+        };
+      });
+      setUsers(newUsers);
+    });
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   return (
     <div className="grid-container">
@@ -121,39 +151,24 @@ function DashboardPage() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Lendsequare</td>
-                  <td>Adedeji</td>
-                  <td>adedeji@adedeji.com</td>
-                  <td>+91 9999999999</td>
-                  <td>2020-01-01</td>
-                  <td>Active</td>
-                  <td>
-                    <i className="fas fa-ellipsis-vertical"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Lendsequare</td>
-                  <td>Adedeji</td>
-                  <td>adedeji@adedeji.com</td>
-                  <td>+91 9999999999</td>
-                  <td>2020-01-01</td>
-                  <td>Active</td>
-                  <td>
-                    <i className="fas fa-ellipsis-vertical"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Lendsequare</td>
-                  <td>Adedeji</td>
-                  <td>adedeji@adedeji.com</td>
-                  <td>+91 9999999999</td>
-                  <td>2020-01-01</td>
-                  <td>Active</td>
-                  <td>
-                    <i className="fas fa-ellipsis-vertical"></i>
-                  </td>
-                </tr>
+                {users.map((user) => (
+                  <tr key={user.id}>
+                    <td>{user.orgName}</td>
+                    <td>{user.userName}</td>
+                    <td>{user.email}</td>
+                    <td>{user.phoneNumber}</td>
+                    <td>{new Date(user.createdAt).toLocaleString()}</td>
+                    <td>
+                      {new Date(user.lastActiveDate).getMilliseconds() >=
+                      new Date().getMilliseconds()
+                        ? "Active"
+                        : "Pending"}
+                    </td>
+                    <td>
+                      <i className="fas fa-ellipsis-vertical"></i>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
