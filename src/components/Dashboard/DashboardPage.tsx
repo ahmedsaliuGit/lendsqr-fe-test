@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Logo from "../../assets/images/logo.svg";
 import UserImage from "../../assets/images/user-image.png";
 import UserIcon from "../../assets/images/user-icon.png";
@@ -7,40 +7,50 @@ import LoansIcon from "../../assets/images/loans-icon.png";
 import SavingsIcon from "../../assets/images/savings-icon.png";
 import "./DashboardPage.css";
 import { Card } from "../Card/Card";
-import { HttpAdapter } from "../../adapters/HttpAdapter";
 import { UserService } from "../../services/User.service";
 import { User } from "../../models/User";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { BallTriangle } from "react-loader-spinner";
 
-const httpAdapter = new HttpAdapter({
-  baseUrl: "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1",
-});
-const userService = new UserService(httpAdapter);
+type DashboardPagePropsType = {
+  userService: UserService;
+};
 
-function DashboardPage() {
+function DashboardPage({ userService }: DashboardPagePropsType) {
   const [nav, setNav] = useState(false);
   const [sidenav, setSidenav] = useState(false);
-  const [users, setUsers] = useState<User[]>([]);
+  const [userData, setUserData] = useLocalStorage<User[]>("lendsqr-users", []);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const fetchUsers = () => {
+    setLoading(true);
     return userService.getAllUsers().then((users) => {
-      const newUsers = users.slice(0, 10).map((user) => {
-        return {
-          id: user.id,
-          userName: user.userName,
-          orgName: user.orgName,
-          phoneNumber: user.phoneNumber,
-          createdAt: user.createdAt,
-          lastActiveDate: user.lastActiveDate,
-          email: user.email,
-        };
-      });
-      setUsers(newUsers);
+      setUserData(users);
+      setLoading(false);
     });
   };
 
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  const usersPerTable = 10;
+  const indexOfLastUser = currentPage * usersPerTable;
+
+  const indexOfFirstUser = indexOfLastUser - usersPerTable;
+
+  const currentUsers = userData.slice(indexOfFirstUser, indexOfLastUser);
+
+  const memoPageNumbers = useMemo(() => {
+    const pageNumbers = [];
+
+    for (let i = 1; i <= Math.ceil(userData.length / usersPerTable); i++) {
+      pageNumbers.push(i);
+    }
+
+    return pageNumbers;
+  }, [userData]);
 
   return (
     <div className="grid-container">
@@ -126,51 +136,74 @@ function DashboardPage() {
         </div>
         <div className="table-container">
           <div className="mobile-container">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>
-                    Organisation <i className="fas fa-filter"></i>
-                  </th>
-                  <th>
-                    Username <i className="fas fa-filter"></i>
-                  </th>
-                  <th>
-                    Email <i className="fas fa-filter"></i>
-                  </th>
-                  <th>
-                    Phone Number <i className="fas fa-filter"></i>
-                  </th>
-                  <th>
-                    Date Joined <i className="fas fa-filter"></i>
-                  </th>
-                  <th>
-                    Status <i className="fas fa-filter"></i>
-                  </th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => (
-                  <tr key={user.id}>
-                    <td>{user.orgName}</td>
-                    <td>{user.userName}</td>
-                    <td>{user.email}</td>
-                    <td>{user.phoneNumber}</td>
-                    <td>{new Date(user.createdAt).toLocaleString()}</td>
-                    <td>
-                      {new Date(user.lastActiveDate).getMilliseconds() >=
-                      new Date().getMilliseconds()
-                        ? "Active"
-                        : "Pending"}
-                    </td>
-                    <td>
-                      <i className="fas fa-ellipsis-vertical"></i>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {loading === true ? (
+              <div className="loader">
+                <BallTriangle color="#00BFFF" width={100} height={100} />
+              </div>
+            ) : (
+              <>
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        Organisation <i className="fas fa-filter"></i>
+                      </th>
+                      <th>
+                        Username <i className="fas fa-filter"></i>
+                      </th>
+                      <th>
+                        Email <i className="fas fa-filter"></i>
+                      </th>
+                      <th>
+                        Phone Number <i className="fas fa-filter"></i>
+                      </th>
+                      <th>
+                        Date Joined <i className="fas fa-filter"></i>
+                      </th>
+                      <th>
+                        Status <i className="fas fa-filter"></i>
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentUsers.map((user) => (
+                      <tr key={user.id}>
+                        <td>{user.orgName}</td>
+                        <td>{user.userName}</td>
+                        <td>{user.email}</td>
+                        <td>{user.phoneNumber}</td>
+                        <td>{new Date(user.createdAt).toLocaleString()}</td>
+                        <td>
+                          {new Date(user.lastActiveDate).getMilliseconds() >=
+                          new Date().getMilliseconds()
+                            ? "Active"
+                            : "Pending"}
+                        </td>
+                        <td>
+                          <i className="fas fa-ellipsis-vertical"></i>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="pagination">
+                  {memoPageNumbers.map((pageNum, index) => (
+                    <span
+                      key={index}
+                      className={
+                        pageNum === currentPage
+                          ? `pagination__item pagination__item--currentPage`
+                          : `pagination__item`
+                      }
+                      onClick={() => setCurrentPage(pageNum)}
+                    >
+                      {pageNum}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </main>

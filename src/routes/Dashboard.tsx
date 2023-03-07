@@ -1,4 +1,4 @@
-import DashboardPage from "../components/Dashboard/DashboardPage";
+import DashboardPage from "../components/Dashboard";
 
 function Dashboard() {
   return <DashboardPage />;
