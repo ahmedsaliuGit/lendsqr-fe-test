@@ -187,20 +187,48 @@ function DashboardPage({ userService }: DashboardPagePropsType) {
                     ))}
                   </tbody>
                 </table>
-                <div className="pagination">
-                  {memoPageNumbers.map((pageNum, index) => (
-                    <span
-                      key={index}
-                      className={
-                        pageNum === currentPage
-                          ? `pagination__item pagination__item--currentPage`
-                          : `pagination__item`
-                      }
-                      onClick={() => setCurrentPage(pageNum)}
+                <div className="pagination-wrapper">
+                  <div className="pagination-showing">
+                    <span>Showing</span>
+                    <button className="btn-showing">
+                      {usersPerTable}{" "}
+                      <i className="fa fa-chevron-down btn-cheron"></i>
+                    </button>
+                    <span>out of {userData.length}</span>
+                  </div>
+                  <div className="pagination">
+                    <button
+                      className="btn-showing btn-showing--left"
+                      onClick={() => setCurrentPage(currentPage - 1)}
+                      disabled={currentPage === 1}
                     >
-                      {pageNum}
-                    </span>
-                  ))}
+                      <i className="fa fa-chevron-left"></i>
+                    </button>
+                    {memoPageNumbers.map((pageNum, index) => (
+                      <span
+                        key={index}
+                        className={
+                          pageNum === currentPage
+                            ? `pagination__item pagination__item--currentPage`
+                            : `pagination__item`
+                        }
+                        onClick={() => setCurrentPage(pageNum)}
+                      >
+                        {pageNum <= 3
+                          ? pageNum
+                          : pageNum - 8 > 0
+                          ? pageNum
+                          : "."}
+                      </span>
+                    ))}
+                    <button
+                      className="btn-showing"
+                      onClick={() => setCurrentPage(currentPage + 1)}
+                      disabled={currentPage === usersPerTable}
+                    >
+                      <i className="fa fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
               </>
             )}
