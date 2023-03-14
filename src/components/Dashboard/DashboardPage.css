@@ -265,7 +265,7 @@ tr:hover td {
 
 .pagination-showing {
   padding: 0.5rem 0;
-  display: flex;
+  display: none;
   justify-content: space-around;
   align-items: center; }
 
@@ -310,7 +310,8 @@ tr:hover td {
   .grid-container {
     grid-template-columns: 240px 1fr;
     /* Show the side nav for non-mobile screens */
-    grid-template-areas: "header header" "sidenav main" "sidenav main"; }
+    grid-template-areas: "header header" "sidenav main" "sidenav main";
+    height: auto; }
   .header {
     display: flex; }
   .logo {
@@ -358,7 +359,9 @@ tr:hover td {
   .table-container {
     max-width: 1028px; }
   .mobile-container {
-    width: auto; } }
+    width: auto; }
+  .pagination-showing {
+    display: flex; } }
 
 /* Medium-sized screen breakpoint (tablet, 1050px) */
 @media only screen and (min-width: 65.625em) {

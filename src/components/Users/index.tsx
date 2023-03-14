@@ -1,7 +1,7 @@
 import { dependencies } from "../../dependencies";
 import { withDependency } from "../../hoc/withDependencies";
-import DashboardPage from "./DashboardPage";
+import { Users } from "./Users";
 
-export default withDependency(DashboardPage, {
+export default withDependency(Users, {
   userService: dependencies.UserService,
 });

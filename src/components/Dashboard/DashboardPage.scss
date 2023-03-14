@@ -305,7 +305,7 @@ tr:hover td {
 
 .pagination-showing {
   padding: 0.5rem 0;
-  display: flex;
+  display: none;
   justify-content: space-around;
   align-items: center;
 }
@@ -361,6 +361,7 @@ tr:hover td {
       "header header"
       "sidenav main"
       "sidenav main";
+    height: auto;
   }
 
   .header {
@@ -436,6 +437,10 @@ tr:hover td {
 
   .mobile-container {
     width: auto;
+  }
+
+  .pagination-showing {
+    display: flex;
   }
 }
 
