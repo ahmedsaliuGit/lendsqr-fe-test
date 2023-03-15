@@ -7,3 +7,9 @@ export type User = {
   createdAt: Date;
   lastActiveDate: Date;
 };
+
+export type UserDetails = {
+  profile: { avatar: string; firstName: string; lastName: string };
+  accountBalance: string;
+  accountNumber: string;
+} & User;

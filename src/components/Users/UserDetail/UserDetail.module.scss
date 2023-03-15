@@ -1,0 +1,116 @@
+@import "../../../base";
+
+.backLink {
+  color: #545f7d;
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1em;
+  display: block;
+}
+
+.subheader {
+  display: block;
+}
+
+.subheader__right {
+  margin-top: 1em;
+}
+
+.actionUserBtn {
+  text-transform: uppercase;
+  padding: 0.5em;
+  background-color: $background-color;
+  border-radius: 5px;
+  font-size: 0.875rem;
+}
+
+.actionUserBtn + .actionUserBtn {
+  margin-left: 1em;
+}
+
+.actionUserBtnDanger {
+  border: 1px solid #e4033b;
+  color: #e4033b;
+}
+
+.actionUserBtnSuccess {
+  border: 1px solid #39cdcc;
+  color: #39cdcc;
+}
+
+.sectionHeader {
+  margin: 1.5em;
+  padding: 1em 1em 0 1em;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.sectionHeaderContent {
+  display: block;
+}
+
+.headerContentUser {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.avatar {
+  width: 40%;
+}
+
+.avatar img {
+  border-radius: 50%;
+}
+
+.userdetail {
+  margin-left: 1em;
+}
+
+.userdetail p,
+.userdetail h3 {
+  margin: 0;
+}
+
+.headerContentAmout {
+  margin-top: 1em;
+}
+
+.headerContentAmout h3,
+.headerContentAmout p {
+  margin: 0;
+}
+
+.userdetail p,
+.headerContentAmout p {
+  margin-top: 0.5em;
+}
+
+.headerTabs {
+  width: auto;
+  max-width: 295px;
+  margin-top: 2em;
+  overflow-x: auto;
+}
+
+.headerTabsList {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.headerTabsItem {
+  color: $tertiary-color;
+  padding-bottom: 0.5rem;
+}
+
+.itemSelected {
+  color: $secondary-color;
+  border-bottom: 2px solid $secondary-color;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

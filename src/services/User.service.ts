@@ -1,5 +1,5 @@
 import { HttpAdapter } from "../adapters/HttpAdapter";
-import { User } from "../models/User";
+import { User, UserDetails } from "../models/User";
 
 export class UserService {
   private readonly http: HttpAdapter;
@@ -10,5 +10,9 @@ export class UserService {
 
   getAllUsers() {
     return this.http.get<User[]>("/users");
+  }
+
+  getUser(userId: number) {
+    return this.http.get<UserDetails>("/users/" + userId);
   }
 }

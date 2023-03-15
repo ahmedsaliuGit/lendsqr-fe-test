@@ -7,7 +7,7 @@ import Login from "./routes/Login";
 import ErrorPage from "./routes/Error";
 import Dashboard from "./routes/Dashboard";
 import Users from "./components/Users";
-import { UserDetail } from "./components/Users/UserDetail/UserDetail";
+import UserDetail from "./components/Users/UserDetail";
 
 const rootRouter = createBrowserRouter([
   {
