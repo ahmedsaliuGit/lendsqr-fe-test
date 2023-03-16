@@ -9,25 +9,28 @@ import Dashboard from "./routes/Dashboard";
 import Users from "./components/Users";
 import UserDetail from "./components/Users/UserDetail";
 
-const rootRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <Login />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/dashboard",
-    element: <Dashboard />,
-    errorElement: <ErrorPage />,
-    children: [
-      { index: true, element: <Users /> },
-      {
-        path: "/dashboard/users/:id",
-        element: <UserDetail />,
-      },
-    ],
-  },
-]);
+const rootRouter = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Login />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
+      errorElement: <ErrorPage />,
+      children: [
+        { index: true, element: <Users /> },
+        {
+          path: "/dashboard/users/:id",
+          element: <UserDetail />,
+        },
+      ],
+    },
+  ],
+  { basename: "/lendsqr-fe-test" }
+);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
