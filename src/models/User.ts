@@ -9,7 +9,35 @@ export type User = {
 };
 
 export type UserDetails = {
-  profile: { avatar: string; firstName: string; lastName: string };
+  profile: {
+    avatar: string;
+    firstName: string;
+    lastName: string;
+    gender: string;
+    bvn: string;
+    phoneNumber: string;
+  };
   accountBalance: string;
   accountNumber: string;
+  education: {
+    employmentStatus: string;
+    level: string;
+    sector: string;
+    duration: string;
+    officeEmail: string;
+    loanRepayment: string;
+    monthlyIncome: [];
+  };
+  socials: {
+    facebook: string;
+    twitter: string;
+    instagram: string;
+  };
+  guarantor: {
+    firstName: string;
+    lastName: string;
+    gender: string;
+    phoneNumber: string;
+    address: string;
+  };
 } & User;

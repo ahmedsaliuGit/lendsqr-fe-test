@@ -36,7 +36,8 @@ body {
   border: 1px solid #39cdcc;
   color: #39cdcc; }
 
-.sectionHeader {
+.sectionHeader,
+.sectionBody {
   margin: 1.5em;
   padding: 1em 1em 0 1em;
   background-color: white;
@@ -98,3 +99,70 @@ body {
   border-bottom: 2px solid #39cdcc;
   padding-left: 1rem;
   padding-right: 1rem; }
+
+.sectionBody {
+  padding-bottom: 1em; }
+
+.sectionBodyRow {
+  border-bottom: 1px solid #e5e5e5; }
+
+.sectionBodyRow:last-child {
+  border-bottom: none; }
+
+.sectionBodyRow h3,
+.sectionBodyLabel {
+  margin-bottom: 0; }
+
+.sectionBodyCategory {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; }
+
+.sectionBodyCol {
+  flex: 1 1 130px; }
+
+.sectionBodyLabel {
+  color: #545f7d;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1rem; }
+
+.sectionBodyItem {
+  margin-top: 0.5em;
+  color: #545f7d;
+  font-weight: 500;
+  font-size: 1rem; }
+
+@media (min-width: 768px) {
+  .headerTabs {
+    max-width: 442px; } }
+
+@media (min-width: 1024px) {
+  .subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .actionUserBtn + .actionUserBtn {
+    margin-right: 0.4em; }
+  .sectionHeaderContent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem; }
+  .headerContentTier p {
+    margin: 0;
+    margin-bottom: 0.5em; }
+  .headerContentAmout {
+    margin-top: 0; }
+  .headerContentTier,
+  .headerContentAmout {
+    border-left: 1px solid #e5e5e5;
+    padding-left: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em; }
+  .headerTabs {
+    max-width: 100%; }
+  .headerTabsList {
+    width: auto; }
+  .sectionBodyCol {
+    flex: 0 1 220px; } }

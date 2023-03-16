@@ -8,6 +8,7 @@ import { BallTriangle } from "react-loader-spinner";
 import { User } from "../../models/User";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { UserService } from "../../services/User.service";
+import { useNavigate } from "react-router-dom";
 
 type UsersPropsType = {
   userService: UserService;
@@ -17,6 +18,8 @@ export const Users = ({ userService }: UsersPropsType) => {
   const [userData, setUserData] = useLocalStorage<User[]>("lendsqr-users", []);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const fetchUsers = () => {
     setLoading(true);
@@ -92,7 +95,10 @@ export const Users = ({ userService }: UsersPropsType) => {
                 </thead>
                 <tbody>
                   {currentUsers.map((user) => (
-                    <tr key={user.id}>
+                    <tr
+                      key={user.id}
+                      onClick={() => navigate(`/dashboard/users/${user.id}`)}
+                    >
                       <td>{user.orgName}</td>
                       <td>{user.userName}</td>
                       <td>{user.email}</td>
